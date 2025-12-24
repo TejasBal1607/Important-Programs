@@ -12,6 +12,7 @@ void BubbleSort(int A[], int n){
                 ctr += 1;
             }
         }
+        
         if (temp2 == ctr){      // Optimization: If no swaps occurred, the array is sorted
             break;
         }
@@ -92,3 +93,4 @@ int main(){
     *B = NULL;
     return 0;
 }
+
