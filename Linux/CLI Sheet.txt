@@ -1,0 +1,158 @@
+1.Directories
+pwd = present/print working directory – gives the location of current directory
+
+ls = list = lists all the items in current dir
+ls <name>/ = lists all the items in <name> dir
+
+
+ls -la = -l is long and a is all = detailed listing including hidden folders
+* when we use ls -la we see output like
+drwxrwxrwx 1 tejas tejas      512 Oct 14 21:17  .
+d stands for dir
+- Stands for file
+rwx – read write exe
+after d first 3 letters are perm for owner of file
+next 3 if perm for members of group in case of group ownership
+last 3 are for common user
+cd = change directory = changes directory acc to argument given
+cd .. = goes to previous directory
+cd <name>/ = goes to <name> dir in current directory
+cd ~/<name>/ = goes to <name> dir in home folder (~/)
+which <file> = used to determine the loc of file used incase of dupes
+
+mkdir <name> = make dir – makes a new dir <name> in the current dir
+cp -r <dir1> <dir2> = copies <dir1> and all its contents to <dir2>
+rmdir <name> = remove dir – removes <name> if empty (safety ft)
+rm -r <dir> = deletes dir and -r stands for recursive = deletes a dir and everything inside it
+
+-f or –-force = force = do the cmd no matter what and don’t ask questions and if fails it fails silently
+
+*EVERYTHING IN LINUX IS A FILE*
+bin – binaries – contains cmd binaries or files containing code abt a cmd
+sbin – super binaries – cmds admin would use
+
+
+
+
+
+2.Files
+echo “<str>” > <filename>.txt = a way to write into a file = echo prints the output <str> on the terminal but by using ‘>’ we can paste the output in <filename>. echo is like print
+cp <name> <dir>/ = copies/duplicates a file/dir <name> from current dir and pastes to <dir>
+mv <name> <dir>/ = moves a file/dir <name> from current dir and pastes to <dir>
+mv <name1> <name2> = standard cmd to rename file <name1> to <name2>
+touch <name> = if the file doesn’t exist it creates a new empty file and if it exists it updates its access and mod timestamp 
+rm <name> = removes a file <name>
+nano <filename> = nano is a text editor which uses cmds to edit file
+gedit <filename> = proper gui based editing in a text editor like notepad
+
+
+
+
+
+
+3.Searching and output
+find <dir> -name “<file>” = searches inside dir for all files that match <file>
+“*” = wildcards = used for patterns = “*.log” = helps in searches
+grep “text” <file>  = global regular expression print = outputs lines containing “text” and we can use -i for case insensitive
+grep -rl "<text>" <dir> = searches all files in dir for “text” and lists only file names cuz of -l
+cut -d “<>” -f 4 = it cuts(like python split) the output by -d or delimiter and outputs the -f or field(index starts from 1)
+locate <keyword> = locates and lists all files with <keyword>
+man <cmd> = gives a manual of cmd
+ls –help = some info
+cat <name> = concatenate = displays the output of file <name>
+less <name> = displays the output in pages format where space is for next pg b is for prev pg and q is to quit reading mode
+head <name> = displays first 10 lines
+<cmd> > <file> = ‘>’ is output redirection and overwrites the content of file or creates a new file if it doesn’t exist
+<cmd> >> <file> = output appending = adds the output of cmd to the very end of the file
+<cmd1> | <cmd2> = pipe op = outputs cmd2 with cmd1 as input
+clear = clears all outputs from terminal
+
+
+
+
+4.Permissions
+– 3 digits -1st owner – 2nd group – 3rd anyone else
+Each digit is sum of Read(4), Write(2) and execute(1)
+chmod 755 <file> = change mode = sets rwx for owner, rx for group and anyone 
+chmod -R 600 <dir> = changes perm of <dir> and its contents to rw for owner
+chown <user>:<group> <file> = changes the ownership of <file> to <user> of <group>
+
+
+
+
+5.Network and Linux Services
+ping <host> = sends small data packets to host(IP or domain) and displays status and response time
+whois <domain> = outputs domain registration info
+curl -O <url/to/file> = curl is used to transfer data -O is used to save the file in current dir with same filename as url
+ssh <username>@host = secure shell establishes an encrypted secure cli connection to remote <host> using <username>
+scp <file> <user>@host:/dest = secure copy copies the file to host server using user to dest path
+service apache2 start = makes a server at your ip that can be accessed through a web browser
+python3 -m http.server <port> = makes a server at your ip at port to display current directory
+
+
+
+
+6.Packages
+dpkg = depackage = old
+apt = adv pkg tool
+aptitude = apt with gui
+apt-get update && apt-get upgrade
+apt-get install git -y = to install git and answer to every confirmation is yes
+git clone <url> = to install using git
+apt remove <pkg> = removes app but doesn’t remove user data
+apt purge <pkg> = removes everything
+
+
+
+
+
+7.Processes and Services
+* daemon is a program that runs automatically in the background, without any direct user interaction, to manage system-level tasks – always on helper
+Systemd (PID = 1)– master daemon controls all other daemons – init system
+systemctl – another way to control services
+Boot – kernel – Systemd – starts all processes by forking
+ps ax = shows processes all(a) including those not attached to terminal(x) and gives their PID
+pgrep <ps_name> = ps and grep command combined to return PID
+*additional u(user-oriented) flag(ps aux) adds useful headers and columns
+top = displays live real time interactive list of running processes
+kill <pid> = send termination signal to process telling it to quit
+systemctl start <service>
+systemctl stop <service>
+systemctl status <service>
+systemctl restart <service>
+systemctl reload <service>
+systemctl disabled <service> = disables from starting on boot
+systemctl is-active <service> = returns active or inactive
+systemctl is-enabled <service>
+systemctl list-units = lists all the active daemons
+systemctl list-units -t service = -t stands for type = gives list of active daemons controlling Linux services
+systemctl 
+
+
+
+
+8.Users and Groups
+sudo – superuser do – user needs to be in sudoers file
+sudo visudo = only way to edit sudoers file
+
+
+*Sudoers file has a failsafe which prevents you to save the file with errors
+
+adduser john = to add a new user = can only be done by root or using sudo
+*Takes inputs and makes everything for the new user
+useradd <user> = lazier version of adduser
+*can use -m with useradd to create home directory
+passwd <usr> = sets password for <usr>
+
+
+cat /etc/passwd = to get info abt users
+
+*uname:pset:uid:gid:,,,:/home/shell
+cat /etc/shadow = displays encrypted passwords
+usermod <name> --shell <> = to change default shell of user
+usermod -l <new> <old> = to change user name
+userdel <usr> = deletes <usr>
+
+groupadd <grpname> = works like adduser but for grp
+usermod -aG <grp> <usr> = -a for appending -G for grp addition = adds <usr> to <grp>
+gpasswd -d <usr> <grp> = to remove <usr> from <grp>
