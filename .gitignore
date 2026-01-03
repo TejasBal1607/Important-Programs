@@ -1,0 +1,18 @@
+# --- Huge Project Folders (Ignore these completely) ---
+Unity/
+Blender/
+Digital-Logic-Sim-Windows/
+ZCO251112/
+Git GitHub/
+Transport System/
+
+# --- System & Temporary Files ---
+.vscode/
+__pycache__/
+*.exe
+*.log
+*.tmp
+*.env
+*.txt
+C++/test.cpp
+Python/testing2.py
