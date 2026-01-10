@@ -1,0 +1,167 @@
+1.1 OSI and TCP/IP Models
+These models provide a framework for how computers communicate over a network.
+
+OSI (Open Systems Interconnection) Model
+A theoretical reference model composed of seven layers. Data flows down from the sender (Application to Physical) and up at the receiver (Physical to Application).
+•	Layer 7: Application: Provides network services directly to user applications (e.g., HTTP, FTP, browsers).
+•	Layer 6: Presentation: Handles data formatting, encryption, decryption, and compression (e.g., converting ASCII to EBCDIC)
+•	Layer 5: Session: Manages sessions (dialogs) between applications, establishing and terminating connections.
+•	Layer 4: Transport: Ensures reliable, end-to-end communication, error control, and flow control (e.g., TCP, UDP).
+•	Layer 3: Network: Handles logical addressing (IP addresses) and routing packets through the best path.
+•	Layer 2: Data Link: Manages physical addressing (MAC addresses), error detection, and frame synchronization (e.g., Ethernet switches).
+•	Layer 1: Physical: Transmits raw bit streams (0s and 1s) over physical media like cables or radio waves.
+
+TCP/IP Model
+A practical model on which the Internet is built. It condenses the OSI model into four layers.
+1.	Application Layer: Combines OSI's Application, Presentation, and Session layers. Handles high-level protocols like HTTP, DNS, and SMTP.
+2.	Transport Layer: Matches OSI's Transport layer. Uses protocols like TCP and UDP to manage host-to-host interaction.
+3.	Internet Layer: Matches OSI's Network layer. Responsible for logical addressing (IP), routing, and packet handling (ICMP, ARP).
+4.	Network Access Layer: Combines OSI's Data Link and Physical layers. Deals with physical hardware and transmission media (Ethernet, Drivers).
+
+Encapsulation and De-encapsulation
+•	Encapsulation: As data moves down the layers, each layer adds its own header (and sometimes trailer) to the data received from the layer above15. For example, the Transport layer adds a header to create a segment; the Internet layer adds an IP header to create a packet.
+•	De-encapsulation: As data moves up at the destination, each layer reads and removes its corresponding header to process the data.
+
+Comparison
+•	OSI is a generic, protocol-independent reference model, often used for teaching and standardization. It strictly distinguishes between services, interfaces, and protocols.
+•	TCP/IP is a practical implementation used for the Internet. It is looser with layer distinctions and supports both connection-oriented and connectionless communication natively.
+
+
+
+1.2 IP Addressing and Subnetting
+IP Addresses
+An IP (Internet Protocol) address uniquely identifies a device on a network18.
+•	IPv4: 32-bit address written as four decimal numbers (0-255) separated by dots (e.g., 192.168.1.1). It accommodates ~4 billion addresses.
+•	IPv6: 128-bit address designed to replace IPv4 due to address exhaustion. It uses hexadecimal format and can accommodate a virtually infinite number of devices.
+
+CIDR and Subnetting
+•	Subnet Mask: Used to divide an IP address into two parts: the Network ID and the Host ID. It determines which part of the IP belongs to the network and which identifies the specific device.
+•	CIDR (Classless Inter-Domain Routing): A notation method (e.g., 192.168.0.0/24) where the suffix (/24) indicates the number of bits used for the network portion of the address.
+  o	Calculation Example: A /24 network means the first 24 bits are fixed for the network (matches the mask 255.255.255.0), leaving 8 bits for hosts ($2^8 = 256$ addresses, usually minus 2 for network/broadcast addresses).
+
+
+
+1.3 Transport Layer Protocols
+TCP (Transmission Control Protocol)
+•	Connection-Oriented: Establishes a reliable connection (handshake) before sending data.
+•	Reliable: Guarantees delivery. It tracks packet sequence, acknowledges receipt, and retransmits lost packets.
+•	Use Case: Web browsing (HTTP), Email (SMTP), File transfers (FTP) where data integrity is crucial.
+
+UDP (User Datagram Protocol)
+•	Connectionless: Sends data ("datagrams") without establishing a connection.
+•	Unreliable (Best Effort): No acknowledgement or retransmission. If a packet is lost, it's gone.
+•	Use Case: Streaming video, VoIP, or Gaming where speed is preferred over perfect accuracy (latency is worse than a dropped frame).
+
+Ports 
+•	Definition: Logical endpoints that allow a single computer to handle multiple services simultaneously (Multiplexing).
+•	Common Ports:
+  o	20/21: FTP (File Transfer) 
+  o	22: SSH (Secure Shell) 
+  o	23: Telnet 
+  o	25: SMTP (Email)
+  o	53: DNS 
+  o	67/68: DHCP 
+  o	80: HTTP (Web)
+  o	443: HTTPS (Secure Web)
+
+
+
+1.4 DNS (Domain Name System)
+Function: DNS translates human-readable domain names (e.g., harvard.edu) into IP addresses (e.g., 192.168.1.1) so computers can communicate.
+Hierarchy and Resolution 30
+
+DNS is a distributed database with a hierarchical structure:
+1.	Root Servers: The top of the hierarchy.
+2.	TLD (Top-Level Domain) Servers: Manage extensions like .com, .edu, .org.
+3.	Authoritative Name Servers: Hold the actual records for specific domains (e.g., google.com).
+
+Resolution Process:
+1.	Query: A client (browser) asks a recursive resolver "Where is example.com?".
+2.	Recursion: If the resolver doesn't know, it asks the Root -> TLD -> Authoritative server in order.
+3.	Response: The final IP is returned to the client and usually cached for future use.
+
+DNS Records
+•	A Record: Maps a hostname to an IPv4 address.
+•	AAAA Record: Maps a hostname to an IPv6 address.
+•	CNAME: Maps an alias name to a true (canonical) domain name.
+•	MX: Mail Exchange record for email routing.
+
+DNSSEC: Security extensions that add digital signatures to DNS records to prevent spoofing and ensure data integrity.
+
+
+
+1.5 HTTP and HTTPS
+
+HTTP (Hypertext Transfer Protocol)
+•	Application-layer protocol for transmitting hypermedia documents (HTML).
+•	Request/Response Cycle: The client sends a request message (Headers + Method), and the server sends a response message (Status Code + Content).
+
+Methods:
+•	GET: Retrieve data (e.g., loading a page).
+•	POST: Submit data to be processed (e.g., a login form).
+•	PUT: Update/Replace data.
+•	DELETE: Remove a resource.
+
+Status Codes:
+•	200 OK: Success.
+•	301: Moved Permanently.
+•	404: Not Found.
+•	500: Internal Server Error.
+
+HTTPS (Secure)
+•	HTTP over SSL/TLS.
+•	Encrypts the communication channel to prevent eavesdropping (Man-in-the-Middle attacks).
+
+
+
+1.6 Network Security Basics
+•	Firewalls: Devices or software that filter traffic based on security rules. Application Gateways can act as firewalls or proxies to restrict unauthorized traffic.
+•	Encryption: Converting data into a coded format. Protocols like SSH (Secure Shell) create encrypted tunnels for remote management, replacing insecure Telnet. VPNs (Virtual Private Networks) similarly encrypt traffic over public networks.
+•	Authentication: Verifying identity.
+  o	SSH Keys: Uses public/private key pairs for secure, password-less login.
+  o	DNSSEC: Uses digital signatures to authenticate DNS data.
+•	Vulnerabilities:
+  o	DoS (Denial of Service): Overwhelming a system with traffic (e.g., NTP amplification, Telnet attacks).
+  o	Spoofing: Faking an IP or DNS entry (mitigated by DNSSEC).
+
+
+
+1.7 Network Devices
+
+Connection Devices:
+•	NIC (Network Interface Card): Hardware connecting a computer to the network media.
+•	Repeater: Amplifies signals to extend network range.
+•	Hub: A "dumb" device that connects segments; it broadcasts data to all ports (inefficient, security risk).
+•	Switch: A "smart" hub. It learns MAC addresses and sends data only to the destination port, reducing collisions.
+
+Routing Devices:
+•	Router: Connects different networks (e.g., LAN to WAN). It uses logical addressing (IP) to route packets efficiently.
+•	Gateway: Translates between different protocols or network architectures (e.g., joining two dissimilar networks).
+
+Cables:
+•	Fiber-Optic: Glass core, uses light. High speed, long distance, immune to interference (EMI).
+•	Coaxial: Copper core with shielding. Used for cable TV/Internet.
+•	Twisted Pair (Ethernet): Copper wires twisted to reduce interference.
+  o	CAT5/5e: Up to 1 Gbps.
+  o	CAT6: Up to 10 Gbps.
+
+
+
+1.8 CS50 & Additional Concepts
+•	ARPANET: The precursor to the modern Internet, connecting the first few points (nodes).
+•	Packets: Data is broken into small chunks (packets) for transmission. A packet contains a Header (Source/Dest IP, Protocol, TTL) and a Payload (Data).
+•	DHCP (Dynamic Host Configuration Protocol): Automatically assigns IP addresses, Subnet Masks, and Gateways to devices so users don't have to configure them manually. It uses a "DORA" process: Discover, Offer, Request, Acknowledge.
+•	Topologies: The physical layout of a network.
+  o	Bus: All devices on one cable.
+  o	Star: All devices connect to a central hub/switch (most common today).
+  o	Ring: Devices connected in a closed loop.
+  o	Mesh: Devices connect to multiple others (high redundancy).
+
+
+
+1.9 Other Important Topics (from PDF)
+•	FTP (File Transfer Protocol): Standard protocol for transferring files. Supports Active (client opens port) and Passive (server opens port) modes.
+•	SMTP (Simple Mail Transfer Protocol): Used for sending email. Vulnerable to "Open Relay" attacks if not configured correctly.
+•	NTP (Network Time Protocol): Synchronizes clocks on computers, which is critical for security logs and authentication.
+•	SSH vs Telnet: Telnet sends data (including passwords) in plain text (insecure). SSH encrypts everything (secure).
+
