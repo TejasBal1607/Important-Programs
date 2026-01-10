@@ -17,6 +17,12 @@ __pycache__/
 *.txt
 *.docx
 *.pdf
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.mov
+*.mp3
 C++/test.cpp
 Python/testing2.py
 
