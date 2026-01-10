@@ -1,0 +1,117 @@
+<!Doctype html>                             <!-- Specifies this is an html 5 document -->
+
+<html>                                      <!-- Root of an HTML page-->
+
+    <head>                                  <!-- Contains page metadata. -->
+        <title>                             <!-- comments show in title -->
+            New Website
+        </title>               <!-- Title tag -->                 
+    </head> 
+    
+    <body>                                  <!-- The main body of the page (rendered by the browser) -->
+        <h1> Most important heading </h1>   <!-- This is a heading <h1> - heading tag -->
+        <h2> Another heading H2 </h2>
+        <h3> Another heading H3 </h3>
+        <h4> Another heading H4 </h4>
+        <h5> Another heading H5 </h5>
+        <h6> Another heading H6 </h6>  
+
+        <p> My paragraph </p>               <!-- Paragraph tag -->
+
+        <a href = "https://google.com"> click me </a>  <!-- Anchor tag for hyperlinks -->
+
+        <img src= "Practice_img.png" alt="Image not loaded">                     <!-- Image tag to display images -->
+
+        <p> This is break <br> in line</p>                                 <!-- Line break tag -->
+
+        <b> This is bold </b>
+        <i>This is italic </i>
+        <u> This is underline </u>                <!-- Text formatting tags -->
+
+        <br>
+        this <sub> is </sub> subscript.
+        this <sub> is </sup> superscript.            <!-- Subscript and Superscript tags -->
+
+        <hr>                                    <!-- Horizontal line tag -->
+        <pre>
+            This is writ
+                        ten.
+               using pre
+             tag.
+        </pre>                                  <!-- Preformatted text tag -->
+
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+        </ul>                                  <!-- Unordered list and list item tags -->
+
+        <ol>
+            <li>Phone</li>
+            <li>PC</li>
+            <li>Laptop</li>
+        </ol>                                 <!-- Ordered list and list item tags -->
+
+        <table>                                 <!-- Table tag -->
+            <caption>Students Report</caption>    <!-- Table caption tag -->
+
+            <thead>                            <!-- Table head tag -->
+                <tr>                         <!-- Table row tag -->
+                    <th>Name</th>                   <!-- Table header tag -->
+                    <th>Grade</th>
+                    <th colspan = "3" > Scholarship </th>  <!-- colspan attribute to extend/span the column-->                  
+                </tr> 
+            </thead>
+            <tbody>                           <!-- Table body tag -->
+                <tr>                        <!-- Table row tag -->
+                    <td>Rohan</td>                  <!-- Table data tag -->
+                    <td>A+</td>
+                    <td>Full</td>
+                    <td>Scholarship</td>
+                    <td>2026</td>
+                </tr>
+                <tr>
+                    <td>Rahul</td>
+                    <td>D</td>
+                    <td>No</td>
+                    <td>Scholarship</td>
+                    <td>N/A</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <video width="640" autoplay loop controls preload="auto">   
+            <source src="Practice_vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- src: Specifies the URL of the video file (harry.mp4 in this case).   width: Adjusts the width of the video player. Height adjusts automatically to maintain aspect ratio.   controls: Displays video controls such as play, pause, volume, etc.  autoplay: Automatically starts playing the video when the page loads.  loop: Causes the video to automatically start over from the beginning when it reaches the end.  preload: Specifies whether the video should be loaded when the page loads (auto, metadata, none). -->
+
+        <form>
+            <label for="name"> Name: </label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">  <!-- Text input field -->
+
+            <br>
+
+            <label for="age"> Age: </label>
+            <input type="number" id="age" name="age" min="1" max="100">  <!-- Number input field with min and max attributes -->
+
+            <br>
+
+            <label for="dob"> Date of Birth: </label>
+            <input type="date" id="dob" name="dob">  <!-- Date input field -->
+
+            <br>
+
+            <label for="appointment"> Appointment Time: </label>
+            <input type="time" id="appointment" name="appointment">  <!-- Time input field -->
+            <!--<input> element: Can be of type text, checkbox, radio, button and submit. We also have a ‘file’ type.     <textarea> element: Defines a multiline text input ‘cols’ and ‘rows’ attributes can be used to size the text area.      <select> element: Defines a drop-down list.-->
+        </form>
+
+        <div>
+            <h1>This is a heading inside a div.</h1>
+            <p>This is a paragraph inside a div.</p>
+        </div>                                 <!-- Division tag to group elements together -->
+
+        <p>This is a <span>highlighted</span> word in a sentence.</p>                    <!-- Span tag to style a part of text -->  
+    </body>                                 <!-- Closing body tag. -->
+
+</html>
