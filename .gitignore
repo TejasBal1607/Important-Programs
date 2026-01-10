@@ -16,7 +16,8 @@ __pycache__/
 *.tmp
 *.env
 *.txt
+*.docx
+*.pdf
 C++/test.cpp
 Python/testing2.py
-Linux/CLI Sheet.docx
-Networks/Notes_Network.docx
+
