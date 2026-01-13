@@ -1,0 +1,100 @@
+1. CSS Basics
+
+•	What is CSS?
+  o	CSS = Cascading Style Sheets.
+  o	Analogy: If HTML is the "skeleton" (structure), CSS is the "skin/clothing" (style/appearance).
+
+•	Syntax:
+
+  selector {
+      property: value;
+  }
+
+  o	Selector: The HTML element you want to style (e.g., h1, .my-class, #my-id).
+  o	Declaration: The rule applied (e.g., color: red;).
+
+•	How to add CSS:
+1.	Inline: Inside the HTML tag (e.g., <h1 style="color:blue;">). Not recommended.
+2.	Internal: Inside <style> tags in the HTML <head>.
+3.	External (Best Practice): Create a .css file (e.g., style.css) and link it in your HTML head:
+
+HTML
+<link rel="stylesheet" href="style.css">
+
+________________________________________
+
+2. Colors & Backgrounds
+
+•	Color Values:
+  o	Named Colors: red, blue, gold.
+  o	Hex Codes: #RRGGBB (e.g., #000000 is black).
+  o	RGB: rgb(255, 0, 0) (Red, Green, Blue values 0-255).
+  o	RGBA: rgba(255, 0, 0, 0.5) (Adds Alpha for transparency, 0.0 to 1.0).
+  o	HSL: hsl(0, 100%, 50%) (Hue, Saturation, Lightness).
+
+•	Backgrounds:
+  o	background-color: Sets the background color.
+  o	background-image: Sets an image (url('image.jpg')).
+  o	background-repeat: no-repeat (prevents tiling), repeat-x, repeat-y.
+  o	background-position: center, top, left.
+  o	background-size: cover (fills area, may crop), contain (shows full image).
+
+________________________________________
+
+3. Typography (Fonts)
+
+•	font-family: Specifies the font (e.g., "Times New Roman", sans-serif). Always list a fallback font.
+
+•	font-size: px (pixels), em (relative to parent), rem (relative to root html).
+
+•	font-weight: Thickness of text (bold or numbers like 400, 700).
+
+•	font-style: Used mostly for italic.
+
+•	text-align: left, center, right.
+
+________________________________________
+
+4. The Box Model (Borders, Margins, Padding)
+
+Every HTML element is a rectangular "box".
+•	Borders:
+  o	Syntax: border: width style color;
+  o	Example: border: 2px solid black;
+  o	border-radius: Rounds corners. 50% makes a square element a perfect circle.
+
+•	Margins: Space outside the border (pushes neighbors away).
+  o	Margin Collapse: Vertical margins of adjacent elements overlap; the larger margin wins (they don't add up).
+  o	margin: auto; centers a block element horizontally.
+
+•	Padding: Space inside the border (between border and content).
+
+•	Shadows:
+  o	box-shadow: 5px 5px 10px gray; (x-offset, y-offset, blur, color).
+  o	text-shadow: Same concept but for text.
+
+________________________________________
+
+5. Layout & Positioning
+
+•	display property:
+  o	block: Takes full width, starts on new line (e.g., <div>, <h1>).
+  o	inline: Takes only needed width, no new line (e.g., <span>, <a>). Width/height settings don't work.
+  o	inline-block: Flows like text (inline) but respects width/height.
+  o	none: Hides element completely (removes from document flow).
+
+•	position property:
+  o	static (Default): Normal flow.
+  o	relative: Offset from its normal position (using top, left), but gap remains in flow.
+  o	absolute: Removed from flow; positioned relative to nearest positioned ancestor.
+  o	fixed: Stuck to the browser window (stays visible when scrolling).
+  o	sticky: Acts like relative until you scroll past it, then becomes fixed.
+
+•	Float:
+  o	float: left/right: Pushes element to side; text wraps around it.
+  o	clear: both: Forces an element to drop below floating elements.
+
+•	Overflow:
+  o	Handles content that is too big for its container.
+  o	hidden (clips content), scroll (adds scrollbars), auto.
+
