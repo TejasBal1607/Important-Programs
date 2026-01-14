@@ -98,3 +98,67 @@ ________________________________________
   o	Handles content that is too big for its container.
   o	hidden (clips content), scroll (adds scrollbars), auto.
 
+________________________________________
+
+6. Advanced Selectors
+
+•	Combinators:
+    o	Descendant (space): div p (All <p> inside <div>).
+    o	Child (>): div > p (Direct children only).
+    o	Adjacent Sibling (+): div + p (The <p> immediately after <div>).
+    o	General Sibling (~): div ~ p (All <p> after <div>).
+
+•	Pseudo-classes: (State of an element)
+  o	:hover: Mouse over.
+  o	:active: Click and hold.
+  o	:focus: Element selected (like an input).
+  o	:nth-child(even/odd): Great for striping tables.
+
+•	Pseudo-elements: (Specific parts)
+  o	::before / ::after: Inserts content via CSS.
+  o	::first-letter: Styles the first letter of a block.
+
+________________________________________
+
+7. Flexbox (Modern Layout)
+
+The most important layout tool.
+
+•	Container: display: flex;
+
+•	Direction: flex-direction: row (default, horizontal) or column (vertical).
+
+•	Main Axis Alignment (Justify):
+  o	justify-content: center; (Centers items).
+  o	justify-content: space-between; (Even spacing, pushed to edges).
+
+•	Cross Axis Alignment (Align):
+  o	align-items: center; (Centers items vertically in a row).
+
+•	Wrapping: flex-wrap: wrap; (Items drop to next line if no space).
+
+________________________________________
+
+8. Motion (Transform & Animation)
+
+•	Transformations: (Instant change)
+  o	transform: translate(x, y); (Move).
+  o	transform: rotate(45deg); (Spin).
+  o	transform: scale(1.5); (Zoom).
+  o	transform: skew(20deg); (Distort).
+
+•	Animations: (Change over time)
+  1.	Define Keyframes:
+  CSS
+  @keyframes mySlide {
+      from { left: 0px; }
+      to { left: 100px; }
+  }
+  2.	Apply to element:
+  CSS
+  .box {
+      animation-name: mySlide;
+      animation-duration: 2s;
+      animation-iteration-count: infinite; /* or specific number */
+      animation-timing-function: linear; /* or ease-in-out */
+  }
