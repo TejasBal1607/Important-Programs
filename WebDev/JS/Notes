@@ -1,0 +1,169 @@
+1. Introduction & Setup
+
+•	JavaScript (JS): A programming language used to make websites interactive (e.g., responding to clicks, fetching data).
+
+•	Linking JS:
+  o	External: Create a .js file and link it in your HTML:
+      HTML
+      <script src="index.js"></script>
+  o	Location: Best practice is to place the <script> tag at the very bottom of the <body> so HTML loads before the script runs.
+
+•	Output:
+  o	console.log("Hello"); - Prints to the developer console (Inspect -> Console).
+  o	window.alert("Hello"); - Creates a popup alert.
+
+________________________________________
+
+2. Variables & Data Types
+
+•	Variables: Containers for storing data.
+  o	let: variable that can be changed later. (Block scoped).
+  o	const: variable that cannot be changed (Constant).
+  o	var: old way, generally avoided now. (Function scoped).
+  o	Example: let age = 25; const pi = 3.14;
+
+•	Data Types:
+  o	String: Text, defined with quotes. "Hello" or 'Hello'.
+  o	Number: Integers (10) or decimals (10.5).
+  o	Boolean: true or false.
+  o	Null: Intentional absence of any object value.
+  o	Undefined: A variable that has been declared but not assigned a value.
+
+•	Template Literals: Using backticks (`) allows you to embed variables directly into strings.
+    JavaScript
+    let name = "Bro";
+    console.log(`Hello ${name}!`); // Output: Hello Bro!
+
+________________________________________
+
+3. User Input & Type Conversion
+
+•	Window Prompt: let username = window.prompt("What's your name?");
+
+•	HTML Input: Getting value from a textbox (more common).
+    JavaScript
+    let username = document.getElementById("myText").value;
+
+•	Type Conversion: User input is often a string by default. You must convert it to do math.
+  o	Number(age): Converts string "25" to number 25.
+  o	String(age): Converts number to string.
+  o	Boolean(value): Converts to true/false.
+
+________________________________________
+
+4. Control Flow (Logic)
+
+•	If Statements: Basic logic.
+    JavaScript
+    if (age >= 18) {
+        console.log("You are an adult");
+    } else {
+        console.log("You are a child");
+    }
+
+•	Ternary Operator: A shortcut for if/else.
+  o	condition ? valueIfTrue : valueIfFalse
+  o	let message = age >= 18 ? "Adult" : "Minor";
+
+•	Switch Statement: Better than many else if statements when checking one variable against many values.
+
+•	Loops:
+  o	While Loop: Repeats while a condition is true.
+  o	For Loop: Repeats a specific number of times. for(let i = 0; i < 10; i++).
+
+________________________________________
+
+5. Arrays & Functions
+
+•	Arrays: Lists of items. let fruits = ["apple", "orange", "banana"];
+  o	push(): Add to end.
+  o	pop(): Remove from end.
+  o	unshift(): Add to beginning.
+  o	shift(): Remove from beginning.
+
+•	Functions: Reusable blocks of code.
+    JavaScript
+    function happyBirthday(name, age){
+        console.log(`Happy birthday ${name}`);
+    }
+
+•	Arrow Functions: A shorter syntax for functions.
+    JavaScript
+    const greeting = (name) => console.log(`Hello ${name}`);
+
+•	Array Methods (Advanced):
+  o	.map(): Creates a new array by applying a function to every element.
+  o	.filter(): Creates a new array with all elements that pass a test.
+  o	.reduce(): Reduces an array to a single value (e.g., summing numbers).
+
+________________________________________
+
+6. Objects & Classes
+
+•	Object: A collection of related properties and methods.
+    JavaScript
+    const person = {
+        firstName: "Spongebob",
+        lastName: "Squarepants",
+        age: 30,
+        sayHello: function(){ console.log("Hi!") }
+    };
+
+•	this keyword: Refers to the object where the code is currently running. In the example above, this.firstName would find "Spongebob".
+
+•	Classes: Blueprints for creating objects.
+    JavaScript
+    class Player {
+        constructor(name, score){
+            this.name = name;
+            this.score = score;
+        }
+    }
+
+________________________________________
+
+7. DOM Manipulation (Crucial for Websites)
+
+•	DOM (Document Object Model): Representation of the page that JS can change.
+
+•	Selectors:
+  o	document.getElementById("myId")
+  o	document.querySelector(".myClass") (Selects the first match)
+  o	document.querySelectorAll(".myClass") (Selects all matches)
+
+•	Event Listeners: Waiting for user interaction.
+    JavaScript
+    let button = document.getElementById("myBtn");
+    button.addEventListener("click", function(){
+        alert("Button clicked!");
+    });
+
+•	ClassList: Easily add/remove CSS classes from JS.
+  o	element.classList.add("active");
+  o	element.classList.remove("active");
+  o	element.classList.toggle("active");
+
+________________________________________
+
+8. Advanced Topics (Async/Await & Fetch)
+
+•	Asynchronous Code: Code that runs out of order (doesn't stop the rest of the program).
+
+•	Callbacks: A function passed as an argument to another function (e.g., "Do this after you finish loading").
+
+•	Promises: An object that promises to return a value in the future (either resolved or rejected).
+
+•	Async / Await: The modern, cleaner way to handle promises.
+
+•	Fetch API: Used to get data from servers (APIs).
+    JavaScript
+    async function getData() {
+        try {
+            const response = await fetch("https://api.example.com/data");
+            if(!response.ok) throw new Error("Could not fetch resource");
+            const data = await response.json();
+            console.log(data);
+        } catch(error) {
+            console.error(error);
+        }
+    }
