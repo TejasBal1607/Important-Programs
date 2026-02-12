@@ -26,4 +26,5 @@ __pycache__/
 *.mp3
 C++/test.cpp
 Python/testing2.py
+Python/AI_test.py
 
